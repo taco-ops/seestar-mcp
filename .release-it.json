@@ -9,7 +9,9 @@
     "commitMessage": "chore: release v${version}",
     "tagName": "v${version}",
     "requireBranch": "main",
-    "requireCleanWorkingDir": false
+    "requireCleanWorkingDir": false,
+    "getLatestTagFromAllRefs": false,
+    "tag": true
   },
   "hooks": {
     "before:init": [

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "seestar-mcp"
-version = "0.2.0"
+version = "0.2.0-beta.0"
 description = "MCP server for controlling SeestarS50 telescope"
 authors = [
     {name = "David Perez", email = "david.perez@tacoops.io"}
@@ -72,7 +72,7 @@ extend-exclude = '''
 '''
 
 [tool.mypy]
-python_version = "3.10"
+python_version = "0.2.0-beta.0"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true

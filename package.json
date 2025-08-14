@@ -1,6 +1,6 @@
 {
   "name": "seestar-mcp-tests",
-  "version": "0.2.0",
+  "version": "0.2.0-beta.0",
   "type": "module",
   "description": "MCP integration tests for SeestarS50 telescope control",
   "main": "mcp-tests/test-mcp-integration.js",
