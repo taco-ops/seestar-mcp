@@ -1,0 +1,19 @@
+[flake8]
+max-line-length = 88
+extend-ignore = E203
+exclude =
+    .git,
+    __pycache__,
+    .venv,
+    venv,
+    .eggs,
+    *.egg,
+    build,
+    dist,
+    .mypy_cache,
+    .pytest_cache
+per-file-ignores =
+    __init__.py:F401
+    tests/*:F401,F811,E501
+    scripts/*:F401,E402,E501
+    src/seestar_mcp/*:F401,F811,F824

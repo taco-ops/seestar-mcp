@@ -1,0 +1,35 @@
+# Production Docker Compose - Uses pre-built images from GitHub Container Registry
+# Usage: docker-compose -f docker-compose.prod.yml up -d
+
+services:
+  seestar-mcp:
+    image: ghcr.io/taco-ops/seestar-mcp:latest
+    container_name: seestar-mcp-server
+    environment:
+      - SEESTAR_HOST=${SEESTAR_HOST:-192.168.1.100}
+      - SEESTAR_PORT=${SEESTAR_PORT:-4700}
+      - SEESTAR_TIMEOUT=${SEESTAR_TIMEOUT:-30.0}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      # Telescope location for accurate coordinate calculations
+      - TELESCOPE_LATITUDE=${TELESCOPE_LATITUDE}
+      - TELESCOPE_LONGITUDE=${TELESCOPE_LONGITUDE}
+      - TELESCOPE_ELEVATION=${TELESCOPE_ELEVATION:-0}
+      - TELESCOPE_TIMEZONE=${TELESCOPE_TIMEZONE}
+    volumes:
+      # Mount logs directory for persistence
+      - ./logs:/app/logs
+    restart: unless-stopped
+    network_mode: host  # Required to access telescope on local network
+
+    # Health check to ensure the service is running
+    healthcheck:
+      test: ["CMD", "python", "-c", "import seestar_mcp; print('OK')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# Optional: separate network for telescope communication
+# networks:
+#   telescope-network:
+#     driver: bridge

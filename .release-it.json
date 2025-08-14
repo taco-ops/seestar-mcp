@@ -1,0 +1,37 @@
+{
+  "github": {
+    "release": true,
+    "releaseName": "Release v${version}",
+    "releaseNotes": true
+  },
+  "npm": false,
+  "git": {
+    "commitMessage": "chore: release v${version}",
+    "tagName": "v${version}",
+    "requireBranch": "main",
+    "requireCleanWorkingDir": false
+  },
+  "hooks": {
+    "before:init": [
+      "uv run pre-commit run --all-files",
+      "uv run pytest",
+      "npm test"
+    ],
+    "after:bump": [
+      "sed -i '' 's/version = \"[^\"]*\"/version = \"${version}\"/' pyproject.toml",
+      "uv run python -m build"
+    ],
+    "after:git:release": [
+      "echo 'Release completed successfully'",
+      "echo 'Docker image will be built and published automatically'"
+    ]
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "filename": "CHANGELOG.md",
+      "preset": {
+        "name": "conventionalcommits"
+      }
+    }
+  }
+}

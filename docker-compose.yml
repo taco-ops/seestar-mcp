@@ -1,0 +1,38 @@
+# SeestarS50 MCP Server - Docker Compose Configuration
+# 🚧 PUBLIC BETA: This software is in beta testing. Use with caution in production.
+# Report issues: https://github.com/taco-ops/seestar-mcp/issues
+
+services:
+  seestar-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: seestar-mcp-server
+    environment:
+      - SEESTAR_HOST=${SEESTAR_HOST:-192.168.1.100}
+      - SEESTAR_PORT=${SEESTAR_PORT:-4700}
+      - SEESTAR_TIMEOUT=${SEESTAR_TIMEOUT:-30.0}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      # Telescope location for accurate coordinate calculations
+      - TELESCOPE_LATITUDE=${TELESCOPE_LATITUDE}
+      - TELESCOPE_LONGITUDE=${TELESCOPE_LONGITUDE}
+      - TELESCOPE_ELEVATION=${TELESCOPE_ELEVATION:-0}
+      - TELESCOPE_TIMEZONE=${TELESCOPE_TIMEZONE}
+    volumes:
+      # Mount logs directory for persistence
+      - ./logs:/app/logs
+      # Mount source code for development (comment out for production)
+      - ./src:/app/src:ro
+    restart: unless-stopped
+    network_mode: host  # Required to access telescope on local network
+
+    # Alternative with port mapping (if not using host network)
+    # ports:
+    #   - "8000:8000"
+    # networks:
+    #   - telescope-network
+
+# Optional: separate network for telescope communication
+# networks:
+#   telescope-network:
+#     driver: bridge
