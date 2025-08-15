@@ -7,9 +7,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Coverage](https://codecov.io/gh/taco-ops/seestar-mcp/branch/main/graph/badge.svg)](https://codecov.io/gh/taco-ops/seestar-mcp)
-[![GitHub release](https://img.shields.io/github/release/taco-ops/seestar-mcp.svg)](https://github.com/taco-ops/seestar-mcp/releases)
-[![GitHub release date](https://img.shields.io/github/release-date/taco-ops/seestar-mcp.svg)](https://github.com/taco-ops/seestar-mcp/releases)
-[![Changelog](https://img.shields.io/badge/changelog-keep%20a%20changelog-E05735)](CHANGELOG.md)
+[![GitHub release (including pre-releases)](https://img.shields.io/github/v/release/taco-ops/seestar-mcp?include_prereleases)](https://github.com/taco-ops/seestar-mcp/releases)
+[![GitHub release date (including pre-releases)](https://img.shields.io/github/release-date-pre/taco-ops/seestar-mcp)](https://github.com/taco-ops/seestar-mcp/releases)
+[![Changelog](https://img.shields.io/github/v/release/taco-ops/seestar-mcp?include_prereleases&label=changelog&color=E05735)](https://github.com/taco-ops/seestar-mcp/blob/main/CHANGELOG.md)
 
 > 🚧 **PUBLIC BETA**: This project is in active development and public beta testing. While all tests pass and core functionality works, we're still gathering user feedback and making improvements. Use with caution in production environments. Please report any issues on GitHub!
 
